@@ -1,8 +1,9 @@
 template<typename T>
-DWORD64 findAddress(HANDLE& pHandle, T targetVal, DWORD64 init, DWORD64 max, DWORD step, DWORD nBytes)
+DWORD64 findAddress(HANDLE& pHandle, T targetVal, unsigned long long initAddr,
+                    unsigned long long  maxAddr, int stepSize, int nBytes)
 {
     T testVal;
-    for(DWORD64 addr = init; addr < max; addr+= step){
+    for(auto addr = initAddr; addr < maxAddr; addr+= stepSize){
         ReadProcessMemory(pHandle, (void*)addr, &testVal, nBytes, 0);
         //std::cout << testVal << std::endl;
         if(testVal == targetVal){

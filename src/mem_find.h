@@ -1,0 +1,1 @@
+DWORD64 findAddress(HANDLE& pHandle, DWORD targetVal, DWORD64 init, DWORD64 max, DWORD64 step, int nBytes);

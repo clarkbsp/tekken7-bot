@@ -5,6 +5,8 @@
 #include "player.h"
 #include "mem_find.h"
 int main(){
+    //this stuff should be moved to the initPlayers function
+    //player objects should be wrapped in a game class 
     DWORD64 maxAddr = 0xFFFFFFFF;//Add another F if it starts to fail
     DWORD p1MacroStateInit = 6482; //initial neutral value for macro state
     Player p1;
@@ -12,14 +14,13 @@ int main(){
     
     HANDLE pHandle = getProcessHandle((LPCTSTR)"TEKKEN 7 ");
 
-
     for(;;){
         if (GetAsyncKeyState(VK_F1) & (1 << 15)){
             std::cout << "Pressed f1 - starting scan for p1 macro state\n";
             Sleep(20);
             initPlayerAddresses(p1,p2);
             //this should be a get function not an assignment
-            p1.macroStateAddr = findAddress(pHandle, p1MacroStateInit, 0x10400264, maxAddr, 0x10000, 4);
+            p1.macroStateAddr = findAddress<DWORD>(pHandle, p1MacroStateInit, 0x10400264, maxAddr, 0x10000, 4);
             if(p1.macroStateAddr){
                 //put these inside the init players function
                 std::cout << "p1 macro state address found\n";

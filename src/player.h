@@ -2,11 +2,11 @@ class Player{
 public:
     Player();
     //DWORD baseAddr;
-    DWORD64 xAddr;
-    DWORD64 yAddr;
-    DWORD64 zAddr;
-    DWORD64 macroStateAddr;
-    DWORD64 macroState;
+    unsigned long long xAddr;
+    unsigned long long yAddr;
+    unsigned long long zAddr;
+    unsigned long long macroStateAddr;
+    int macroState;
     float x;
     float y;
     float z;

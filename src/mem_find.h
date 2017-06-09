@@ -1,6 +1,5 @@
 template<typename T>
-unsigned long long findAddress(
-                                const HANDLE& pHandle, 
+unsigned long long findAddress(const HANDLE& pHandle, 
                                 T targetVal, 
                                 unsigned long long initAddr,
                                 unsigned long long  maxAddr, 

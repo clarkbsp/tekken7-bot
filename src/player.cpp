@@ -44,6 +44,13 @@ void Player::setAnimStateAddr(unsigned long long addr){
     animStateAddr = addr;
 }
 
+unsigned long long Player::getAttackStateAddr(){
+    return animStateAddr;
+}
+void Player::setAttackStateAddr(unsigned long long addr){
+    attackStateAddr = addr;
+}
+
 float Player::getX(){
     ReadProcessMemory(pHandle, (void*)(xAddr), &x,4, 0);
     return x;
@@ -67,4 +74,9 @@ int Player::getMacroState(){
 int Player::getAnimState(){
     ReadProcessMemory(pHandle, (void*)(animStateAddr), &animState,4, 0);
     return animState;
+}
+
+int Player::getAttackState(){
+    ReadProcessMemory(pHandle, (void*)(attackStateAddr), &attackState,4, 0);
+    return attackState;
 }

@@ -4,20 +4,18 @@
 #include "handle.h"
 #include "win32_helper.h"
 #include "player.h"
+#include "game.h"
 
 HANDLE pHandle = getProcessHandle((LPCTSTR)"TEKKEN 7 ");
 int main(){
     
-    Player p1;
-    Player p2;
-    initPlayerAddresses(p1,p2);
+    Game game = Game();
     for(;;){
         if (GetAsyncKeyState(VK_F1) & (1 << 15)){
             std::cout << "Pressed f1 - starting scan for p1 macro state\n";
-            Sleep(20);
-            initPlayerAddresses(p1,p2);
+            game.initPlayerAddresses();
         }
         Sleep(100);
-        std::cout << p1.getMacroState() << " " << p1.getX() << " " << p1.getY()  << " " << p1.getZ() << std::endl;
+        std::cout << game.p1.getMacroState() << " " << game.p1.getX() << " " << game.p1.getY()  << " " << game.p1.getZ() << std::endl;
     }
 }

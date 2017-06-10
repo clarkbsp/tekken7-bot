@@ -12,7 +12,7 @@ Game::Game(){
 
 bool Game::initPlayerAddresses(){
     unsigned long long minAddr = 0x10400264;//The first guess for searching for the p1 macro state address
-    unsigned long long maxAddr = 0xAFFFFFFF;//Increase if it starts to fail; lower for faster searches
+    unsigned long long maxAddr = 0xBFFFFFFF;//Increase if it starts to fail; lower for faster searches
     int p1MacroStateInit = 6482; //initial neutral value for p1 macro state
 
     p1.setMacroStateAddr(findAddress<int>(pHandle, p1MacroStateInit, 
@@ -20,6 +20,9 @@ bool Game::initPlayerAddresses(){
 
     if(p1.getMacroStateAddr()){
         std::cout << "p1 macro state address found\n";
+
+        p1.setAnimStateAddr(p1.getMacroStateAddr() + 0x10c);
+
         p1.setXAddr(p1.getMacroStateAddr() + 0x98c);
         p1.setYAddr(p1.getXAddr() + 0x4);
         p1.setZAddr(p1.getYAddr() + 0x4);

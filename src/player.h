@@ -3,7 +3,9 @@ class Player{
     unsigned long long yAddr;
     unsigned long long zAddr;
     unsigned long long macroStateAddr;
+    unsigned long long animStateAddr;
     int macroState;
+    int animState;
     float x;
     float y;
     float z;
@@ -22,6 +24,9 @@ public:
     unsigned long long getMacroStateAddr();
     void setMacroStateAddr(unsigned long long macroStateAddr);
 
+    unsigned long long getAnimStateAddr();
+    void setAnimStateAddr(unsigned long long animStateAddr);
+
     float getX();
 
     float getY();
@@ -31,4 +36,6 @@ public:
     float getPos();
 
     int getMacroState();
+
+    int getAnimState();
 };

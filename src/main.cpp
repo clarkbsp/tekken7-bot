@@ -17,7 +17,8 @@ int main(){
         }
         Sleep(100);
         //std::cout << game.p1.getMacroState() << " " << game.p2.getMacroState() << std::endl;
-        std::cout << game.p2.getX() << " " << game.p2.getY()  << " " << game.p2.getZ() << std::endl;
-        //std:: cout << game.p2.getXAddr() << std::endl;
+        //std::cout << game.p1.getMacroState()<< " " << game.p2.getMacroState()<< " " << game.p2.getX() << " " << game.p2.getY()  << " " << game.p2.getZ() << std::endl;
+
+        std:: cout << game.p1.getAnimState() << " "<< game.p1.getMacroState()<< std::endl;
     }
 }

@@ -32,5 +32,3 @@ public:
 
     int getMacroState();
 };
-
-bool initPlayerAddresses(Player& p1, Player& p2);

@@ -23,6 +23,7 @@ bool Game::initPlayerAddresses(){
 
         p1.setAnimStateAddr(p1.getMacroStateAddr() + 0x10c);
         p1.setAttackStateAddr(p1.getMacroStateAddr() + 0xA8);
+        p1.setBlockStateAddr(p1.getMacroStateAddr() + 0xB0);
 
         p1.setXAddr(p1.getMacroStateAddr() + 0x98c);
         p1.setYAddr(p1.getXAddr() + 0x4);

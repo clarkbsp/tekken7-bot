@@ -19,6 +19,6 @@ int main(){
         //std::cout << game.p1.getMacroState() << " " << game.p2.getMacroState() << std::endl;
         //std::cout << game.p1.getMacroState()<< " " << game.p2.getMacroState()<< " " << game.p2.getX() << " " << game.p2.getY()  << " " << game.p2.getZ() << std::endl;
 
-        std:: cout << game.p1.getAttackState() << " "<< game.p1.getAnimState()<< std::endl;
+        std:: cout << game.p1.getAttackState() << " " << game.p1.getBlockState()<< std::endl;
     }
 }

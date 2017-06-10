@@ -45,10 +45,17 @@ void Player::setAnimStateAddr(unsigned long long addr){
 }
 
 unsigned long long Player::getAttackStateAddr(){
-    return animStateAddr;
+    return attackStateAddr;
 }
 void Player::setAttackStateAddr(unsigned long long addr){
     attackStateAddr = addr;
+}
+
+unsigned long long Player::getBlockStateAddr(){
+    return blockStateAddr;
+}
+void Player::setBlockStateAddr(unsigned long long addr){
+    blockStateAddr = addr;
 }
 
 float Player::getX(){
@@ -79,4 +86,9 @@ int Player::getAnimState(){
 int Player::getAttackState(){
     ReadProcessMemory(pHandle, (void*)(attackStateAddr), &attackState,4, 0);
     return attackState;
+}
+
+int Player::getBlockState(){
+    ReadProcessMemory(pHandle, (void*)(blockStateAddr), &blockState,4, 0);
+    return blockState;
 }

@@ -42,3 +42,8 @@ bool Game::initPlayerAddresses(){
     }
     return true;
 }
+
+void Game::update(){
+    p1.update();
+    p2.update();
+}

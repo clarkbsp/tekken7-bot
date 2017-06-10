@@ -15,7 +15,7 @@ class Player{
     float z;
 public:
     Player();
-
+    void update();
     unsigned long long getXAddr();
     void setXAddr(unsigned long long addr);
 

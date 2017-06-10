@@ -11,6 +11,7 @@ int main(){
     
     Game game = Game();
     for(;;){
+        game.update();
         if (GetAsyncKeyState(VK_F1) & (1 << 15)){
             std::cout << "Pressed f1 - starting scan for p1 macro state\n";
             game.initPlayerAddresses();

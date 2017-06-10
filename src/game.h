@@ -4,4 +4,5 @@ public:
     Player p1;
     Player p2;
     bool initPlayerAddresses();
+    void update();
 };

@@ -1,5 +1,6 @@
 class Player{
 public:
+    Player();
     unsigned long long xAddr;
     unsigned long long yAddr;
     unsigned long long zAddr;
@@ -14,6 +15,6 @@ public:
     float x;
     float y;
     float z;
-    Player();
     void update();
+    friend std::ostream& operator<<(std::ostream& os, const Player& p);
 };

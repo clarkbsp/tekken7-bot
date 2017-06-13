@@ -17,3 +17,10 @@ void Player::update(){
     ReadProcessMemory(pHandle, (void*)(attackStateAddr), &attackState,4, 0);
     ReadProcessMemory(pHandle, (void*)(blockStateAddr), &blockState,4, 0);
 }
+
+std::ostream& operator<<(std::ostream& os, const Player& p){
+    os << "States: " << p.macroState << " " << p.animState << " " << p.attackState<< " " << p.blockState << std::endl;
+    os << "Position: " << p.x << " " << p.y << " " << p.z;
+
+    return os;
+}

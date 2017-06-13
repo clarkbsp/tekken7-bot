@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 #include <windows.h>
 
 #include "handle.h"
@@ -16,10 +17,8 @@ int main(){
             std::cout << "Pressed f1 - starting scan for p1 macro state\n";
             game.initPlayerAddresses();
         }
-        Sleep(100);
-        //std::cout << game.p1.getMacroState() << " " << game.p2.getMacroState() << std::endl;
-        //std::cout << game.p1.getMacroState()<< " " << game.p2.getMacroState()<< " " << game.p2.getX() << " " << game.p2.getY()  << " " << game.p2.getZ() << std::endl;
-
-        std:: cout << game.p1.attackState << " " << game.p1.blockState<< std::endl;
+        Sleep(200);
+        system("cls");
+        std::cout << game << std::endl;
     }
 }

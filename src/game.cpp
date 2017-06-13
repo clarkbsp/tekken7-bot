@@ -34,10 +34,10 @@ bool Game::initPlayerAddresses(){
             p2MinAddr, maxAddr, 0x10000, 4));
 
         if(p2.macroStateAddr){
-            p2.animStateAddr = (p2.macroStateAddr + 0x10c - 8);
+            p2.animStateAddr = (p2.macroStateAddr + 0x10c - 8); //(p2.macroStateAddr + 0x10c - 8);
             p2.xAddr = (p2.macroStateAddr + 0x98c-8);//different offset with opponent p2
-            p2.yAddr = (p2.yAddr + 0x4);
-            p2.zAddr = (p2.zAddr + 0x4);  
+            p2.yAddr = (p2.xAddr + 0x4);
+            p2.zAddr = (p2.yAddr + 0x4);  
         }
     }
     return true;
@@ -46,4 +46,11 @@ bool Game::initPlayerAddresses(){
 void Game::update(){
     p1.update();
     p2.update();
+}
+
+std::ostream& operator<<(std::ostream& os, const Game& g){
+    os << "Player 1:\n" << g.p1 << std::endl;
+    os << "Player 2:\n" << g.p2;
+
+    return os;
 }

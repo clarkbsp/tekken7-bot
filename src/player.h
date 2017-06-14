@@ -15,6 +15,7 @@ public:
     float x;
     float y;
     float z;
+    float geometry[];
     void update();
     friend std::ostream& operator<<(std::ostream& os, const Player& p);
 };

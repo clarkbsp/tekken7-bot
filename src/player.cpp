@@ -19,7 +19,9 @@ void Player::update(){
 }
 
 std::ostream& operator<<(std::ostream& os, const Player& p){
-    os << "States: " << p.macroState << " " << p.animState << " " << p.attackState<< " " << p.blockState << std::endl;
+    os << "Base Address: " << std::hex << p.macroStateAddr << std::endl;
+    os << "Geometry Address: " << std::hex << p.xAddr << std::endl;
+    os << "States: " << std:: dec << p.macroState << " " << p.animState << " " << p.attackState<< " " << p.blockState << std::endl;
     os << "Position: " << p.x << " " << p.y << " " << p.z;
 
     return os;

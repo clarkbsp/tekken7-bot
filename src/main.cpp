@@ -9,7 +9,7 @@
 
 HANDLE pHandle = getProcessHandle((LPCTSTR)"TEKKEN 7 ");
 int main(){
-    
+    Point3d p = Point3d(1,2,3);
     Game game = Game();
     for(;;){
         game.update();

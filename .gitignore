@@ -6,6 +6,7 @@ notes/
 *.dll
 
 *.txt
+*.bak
 
 *.sublime-project
 *.sublime-workspace

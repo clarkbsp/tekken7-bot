@@ -44,8 +44,13 @@ bool Game::initPlayerAddresses(){
     return true;
 }
 
-float Game::getPlayerDistance(){
+float Game::getPlayerDistance() const{
     return playerDistance;
+}
+
+int Game::getQuantizedPlayerDistance() const{
+    int quantizedDistance = (int)getPlayerDistance()/200;
+    return std::min(10,(std::max(0,quantizedDistance-5)));
 }
 
 void Game::update(){
@@ -61,7 +66,8 @@ void Game::updatePlayerDistance(){
 std::ostream& operator<<(std::ostream& os, const Game& g){
     os << "Player 1:\n" << g.p1 << std::endl;
     os << "Player 2:\n" << g.p2 << std::endl;
-    os << "Player Distance: " << g.playerDistance;
+    os << "Player Distance: " << g.playerDistance << std::endl;
+    os << "Quantized Player Distance: " << g.getQuantizedPlayerDistance();
 
     return os;
 }

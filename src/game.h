@@ -6,7 +6,8 @@ public:
     float playerDistance;
 
     bool initPlayerAddresses();
-    float getPlayerDistance();
+    float getPlayerDistance() const;
+    int getQuantizedPlayerDistance() const;
     void update();
     void updatePlayerDistance();
     friend std::ostream& operator<<(std::ostream& os, const Game& g);

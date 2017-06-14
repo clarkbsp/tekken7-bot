@@ -16,6 +16,22 @@ void Player::update(){
     ReadProcessMemory(pHandle, (void*)(animStateAddr), &animState,4, 0);
     ReadProcessMemory(pHandle, (void*)(attackStateAddr), &attackState,4, 0);
     ReadProcessMemory(pHandle, (void*)(blockStateAddr), &blockState,4, 0);
+    updateGeometry2d();
+}
+
+void Player::updateGeometry2d(){
+    geometry2d.clear();
+    int stepSize = 32;
+    int numPoints = 23;
+    auto minAddr = xAddr;
+    auto maxAddr = xAddr + stepSize*numPoints;
+    float tempX;
+    float tempY;
+    for (auto addr = minAddr; addr < maxAddr; addr += stepSize){
+        ReadProcessMemory(pHandle, (void*)(addr), &tempX, 4, 0);
+        ReadProcessMemory(pHandle, (void*)(addr+8), &tempY, 4, 0);
+        geometry2d.push_back(Point2d(tempX,tempY));
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const Player& p){

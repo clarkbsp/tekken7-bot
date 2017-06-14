@@ -1,3 +1,6 @@
+#include <vector>
+#include "point2d.h"
+
 class Player{
 public:
     Player();
@@ -15,7 +18,9 @@ public:
     float x;
     float y;
     float z;
-    float geometry[];
+    std::vector<Point2d> geometry2d;
+
     void update();
+    void updateGeometry2d();
     friend std::ostream& operator<<(std::ostream& os, const Player& p);
 };

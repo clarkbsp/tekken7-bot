@@ -9,7 +9,6 @@
 
 HANDLE pHandle = getProcessHandle((LPCTSTR)"TEKKEN 7 ");
 int main(){
-    Point3d p = Point3d(1,2,3);
     Game game = Game();
     for(;;){
         game.update();
@@ -20,5 +19,6 @@ int main(){
         Sleep(200);
         system("cls");
         std::cout << game << std::endl;
+        std::cout << game.p1.geometry2d[0].x << " " << game.p1.geometry2d[0].y << std::endl;
     }
 }

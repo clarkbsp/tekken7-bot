@@ -26,6 +26,8 @@ bool Game::initPlayerAddresses(){
         p1.attackStateAddr = (p1.macroStateAddr + 0xA8);
         p1.blockStateAddr = (p1.macroStateAddr + 0xB0);
 
+        p1.healthAddr = p1.macroStateAddr + 0xf62;
+
         p1.xAddr = (p1.macroStateAddr + 0x98c);
         p1.yAddr = (p1.xAddr + 0x8);
         p1.zAddr = (p1.xAddr + 0x4);
@@ -38,7 +40,12 @@ bool Game::initPlayerAddresses(){
             p2.animStateAddr = (p2.macroStateAddr + 0x10c - 8); //(p2.macroStateAddr + 0x10c - 8);
             p2.xAddr = (p2.macroStateAddr + 0x98c-8);//different offset with opponent p2
             p2.yAddr = (p2.xAddr + 0x8);
-            p2.zAddr = (p2.xAddr + 0x4);  
+            p2.zAddr = (p2.xAddr + 0x4);
+
+            p2.attackStateAddr = (p2.macroStateAddr + 0xA8 + 16);
+            p2.blockStateAddr = (p2.macroStateAddr + 0xB0 + 16);
+
+            p2.healthAddr = p2.macroStateAddr + 0xf62-8;
         }
     }
     return true;
@@ -60,7 +67,7 @@ void Game::update(){
 }
 
 void Game::updatePlayerDistance(){
-    playerDistance = sqrt(pow(p2.getX() - p1.getX(), 2) + pow(p2.getY() - p2.getY(), 2));
+    playerDistance = sqrt(pow(p2.getX() - p1.getX(), 2) + pow(p2.getY() - p1.getY(), 2));
 }
 
 std::ostream& operator<<(std::ostream& os, const Game& g){

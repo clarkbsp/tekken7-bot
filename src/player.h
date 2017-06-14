@@ -4,6 +4,7 @@
 class Player{
 public:
     Player();
+    unsigned long long healthAddr;
     unsigned long long xAddr;
     unsigned long long yAddr;
     unsigned long long zAddr;
@@ -11,6 +12,7 @@ public:
     unsigned long long animStateAddr;
     unsigned long long attackStateAddr;
     unsigned long long blockStateAddr;
+    int health;
     int macroState;
     int animState;
     int attackState;

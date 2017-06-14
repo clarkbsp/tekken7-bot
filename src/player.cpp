@@ -17,6 +17,7 @@ void Player::update(){
     ReadProcessMemory(pHandle, (void*)(attackStateAddr), &attackState,4, 0);
     ReadProcessMemory(pHandle, (void*)(blockStateAddr), &blockState,4, 0);
     ReadProcessMemory(pHandle, (void*)(healthAddr), &health,4 , 0);
+    ReadProcessMemory(pHandle, (void*)(sideSwappedAddr), &sideSwapped,4 , 0);
     updateGeometry2d();
 }
 
@@ -62,9 +63,10 @@ void Player::updateGeometry2d(){
 
 std::ostream& operator<<(std::ostream& os, const Player& p){
     os << "Base Address: " << std::hex << p.macroStateAddr << std::endl;
-    os << "Geometry Address: " << std::hex << p.xAddr << std::endl;
+    //os << "Geometry Address: " << std::hex << p.xAddr << std::endl;
     os << "States: " << std:: dec << p.macroState << " " << p.animState << " " << p.attackState<< " " << p.blockState << std::endl;
     os << "Position: " << p.getPosition2d() << std::endl;//<< p.x << " " << p.y << " " << p.z;
-    os << "Health: " << p.health;
+    os << "Health: " << p.health << std::endl;
+    os << "Side Swapped: " << p.sideSwapped;
     return os;
 }

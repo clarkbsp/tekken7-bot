@@ -28,6 +28,8 @@ bool Game::initPlayerAddresses(){
 
         p1.healthAddr = p1.macroStateAddr + 0xf62;
 
+        p1.sideSwappedAddr = p1.macroStateAddr + 0x860;
+
         p1.xAddr = (p1.macroStateAddr + 0x98c);
         p1.yAddr = (p1.xAddr + 0x8);
         p1.zAddr = (p1.xAddr + 0x4);
@@ -42,10 +44,12 @@ bool Game::initPlayerAddresses(){
             p2.yAddr = (p2.xAddr + 0x8);
             p2.zAddr = (p2.xAddr + 0x4);
 
-            p2.attackStateAddr = (p2.macroStateAddr + 0xA8 + 16);
-            p2.blockStateAddr = (p2.macroStateAddr + 0xB0 + 16);
+            p2.attackStateAddr = (p2.macroStateAddr + 0xA0);
+            p2.blockStateAddr = (p2.macroStateAddr + 0xB0 - 8);
 
             p2.healthAddr = p2.macroStateAddr + 0xf62-8;
+
+            p2.sideSwappedAddr = p2.macroStateAddr + 0xf40;
         }
     }
     return true;
@@ -72,7 +76,9 @@ void Game::updatePlayerDistance(){
 
 std::ostream& operator<<(std::ostream& os, const Game& g){
     os << "Player 1:\n" << g.p1 << std::endl;
+    os << "\n";
     os << "Player 2:\n" << g.p2 << std::endl;
+    os << "\n";
     os << "Player Distance: " << g.playerDistance << std::endl;
     os << "Quantized Player Distance: " << g.getQuantizedPlayerDistance();
 

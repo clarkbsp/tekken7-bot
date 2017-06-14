@@ -50,7 +50,7 @@ float Game::getPlayerDistance() const{
 
 int Game::getQuantizedPlayerDistance() const{
     int quantizedDistance = (int)getPlayerDistance()/200;
-    return std::min(10,(std::max(0,quantizedDistance-5)));
+    return std::min(9,(std::max(0,quantizedDistance-5)));
 }
 
 void Game::update(){

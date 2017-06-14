@@ -19,9 +19,12 @@ public:
     float y;
     float z;
     std::vector<Point2d> geometry2d;
+    Point2d position2d;
 
-    Point2d getCentroid2d();
-    Point2d getPosition2d();
+    Point2d getCentroid2d() const;
+    Point2d getPosition2d() const;
+    float getX() const;
+    float getY() const;
     void update();
     void updateGeometry2d();
     friend std::ostream& operator<<(std::ostream& os, const Player& p);

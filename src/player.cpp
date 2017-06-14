@@ -19,7 +19,7 @@ void Player::update(){
     updateGeometry2d();
 }
 
-Point2d Player::getCentroid2d(){
+Point2d Player::getCentroid2d() const{
     int count = 0;
     float xSum = 0;
     float ySum = 0;
@@ -32,10 +32,17 @@ Point2d Player::getCentroid2d(){
     return Point2d(xSum/count, ySum/count);
 }
 
-Point2d Player::getPosition2d(){
-    return getCentroid2d();
+Point2d Player::getPosition2d() const{
+    return position2d;
 }
 
+float Player::getX() const{
+    return position2d.x;
+}
+
+float Player::getY() const{
+    return position2d.y;
+}
 void Player::updateGeometry2d(){
     geometry2d.clear();
     int stepSize = 32;
@@ -49,13 +56,14 @@ void Player::updateGeometry2d(){
         ReadProcessMemory(pHandle, (void*)(addr+8), &tempY, 4, 0);
         geometry2d.push_back(Point2d(tempX,tempY));
     }
+    position2d = getCentroid2d();
 }
 
 std::ostream& operator<<(std::ostream& os, const Player& p){
     os << "Base Address: " << std::hex << p.macroStateAddr << std::endl;
     os << "Geometry Address: " << std::hex << p.xAddr << std::endl;
     os << "States: " << std:: dec << p.macroState << " " << p.animState << " " << p.attackState<< " " << p.blockState << std::endl;
-    os << "Position: " << p.x << " " << p.y << " " << p.z;
+    os << "Position: " << p.getPosition2d();//<< p.x << " " << p.y << " " << p.z;
 
     return os;
 }

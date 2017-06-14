@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <iostream>
+#include <cmath>
 
 #include "handle.h"
 #include "mem_find.h"
@@ -43,14 +44,24 @@ bool Game::initPlayerAddresses(){
     return true;
 }
 
+float Game::getPlayerDistance(){
+    return playerDistance;
+}
+
 void Game::update(){
     p1.update();
     p2.update();
+    updatePlayerDistance();
+}
+
+void Game::updatePlayerDistance(){
+    playerDistance = sqrt(pow(p2.getX() - p1.getX(), 2) + pow(p2.getY() - p2.getY(), 2));
 }
 
 std::ostream& operator<<(std::ostream& os, const Game& g){
     os << "Player 1:\n" << g.p1 << std::endl;
-    os << "Player 2:\n" << g.p2;
+    os << "Player 2:\n" << g.p2 << std::endl;
+    os << "Player Distance: " << g.playerDistance;
 
     return os;
 }

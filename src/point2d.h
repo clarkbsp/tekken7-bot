@@ -6,4 +6,6 @@ public:
 
     const float x;
     const float y;
+
+    friend std::ostream& operator<<(std::ostream& os, const Point2d& p);
 };

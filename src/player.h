@@ -20,6 +20,8 @@ public:
     float z;
     std::vector<Point2d> geometry2d;
 
+    Point2d getCentroid2d();
+    Point2d getPosition2d();
     void update();
     void updateGeometry2d();
     friend std::ostream& operator<<(std::ostream& os, const Player& p);

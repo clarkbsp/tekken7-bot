@@ -19,6 +19,7 @@ int main(){
         Sleep(200);
         system("cls");
         std::cout << game << std::endl;
-        std::cout << game.p1.geometry2d[0].x << " " << game.p1.geometry2d[0].y << std::endl;
+        std::cout << game.p1.geometry2d[22].x << " " << game.p1.geometry2d[22].y << std::endl;
+        std::cout << game.p1.getPosition2d() << std::endl;
     }
 }

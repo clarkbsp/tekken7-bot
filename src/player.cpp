@@ -19,6 +19,23 @@ void Player::update(){
     updateGeometry2d();
 }
 
+Point2d Player::getCentroid2d(){
+    int count = 0;
+    float xSum = 0;
+    float ySum = 0;
+    for (auto&& point : geometry2d){
+        xSum += point.x;
+        ySum += point.y;
+        count += 1;
+    }
+
+    return Point2d(xSum/count, ySum/count);
+}
+
+Point2d Player::getPosition2d(){
+    return getCentroid2d();
+}
+
 void Player::updateGeometry2d(){
     geometry2d.clear();
     int stepSize = 32;

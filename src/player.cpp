@@ -1,11 +1,14 @@
 #include <windows.h>
 #include <iostream>
+#include <string>
+#include <sstream>
 
 #include "handle.h"
 #include "mem_find.h"
 #include "player.h"
 
 Player::Player(){
+    health = 0;
 }
 
 void Player::update(){
@@ -30,12 +33,22 @@ Point2d Player::getCentroid2d() const{
         ySum += point.y;
         count += 1;
     }
-
     return Point2d(xSum/count, ySum/count);
 }
 
 Point2d Player::getPosition2d() const{
     return position2d;
+}
+
+int Player::getHealth() const{
+    return health;
+}
+
+std::string Player::getStateString() const{
+    std::stringstream ss;
+    ss << std::hex;
+    ss << macroState << " " << animState << " " << attackState << " " << blockState;
+    return ss.str();
 }
 
 float Player::getX() const{

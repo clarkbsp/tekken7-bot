@@ -9,6 +9,7 @@
 #include "game.h"
 
 Game::Game(){
+    damageDoneDiff = 0;
     initPlayerAddresses();
 }
 
@@ -56,6 +57,9 @@ bool Game::initPlayerAddresses(){
     return true;
 }
 
+int Game::getDamageDoneDiff() const{
+    return damageDoneDiff;
+}
 
 std::string Game::getGameStateString() const{
     return gameStateString;
@@ -72,24 +76,44 @@ int Game::getQuantizedPlayerDistance() const{
 
 void Game::update(){
     //Make sure to update players first
+    updatePlayers();
+    updatePlayerDistance();
+    updateQuantizedPlayerDistance();
+
+    //Update state string last
+    updateGameStateString();
+}
+
+void Game::updatePlayers(){
+    int p1HealthDelta = p1.getHealth();
+    int p2HealthDelta = p2.getHealth();
+
     p1.update();
     p2.update();
 
-    updatePlayerDistance();
-    updateGameStateString();
+    p1HealthDelta -= p1.getHealth();
+    p2HealthDelta -= p2.getHealth();
+    damageDoneDiff = p2HealthDelta - p1HealthDelta;
 }
 
 void Game::updateGameStateString(){
     std::stringstream ss;
     ss << std::hex;
-    ss << p1.macroState << " " << p1.animState << " " << p1.attackState << " " << p1.blockState << " ";
-    ss << p2.macroState << " " << p2.animState << " " << p2.attackState << " " << p2.blockState << " ";
-    ss << getQuantizedPlayerDistance();
+    ss << p1.getStateString();
+    ss << " ";
+    ss << p2.getStateString();
+    ss << " ";
+    ss << quantizedPlayerDistance;
     gameStateString = ss.str();
 }
 
 void Game::updatePlayerDistance(){
     playerDistance = sqrt(pow(p2.getX() - p1.getX(), 2) + pow(p2.getY() - p1.getY(), 2));
+}
+
+void Game::updateQuantizedPlayerDistance(){
+    int quantizedDistance = (int)getPlayerDistance()/200;
+    quantizedPlayerDistance =  std::min(9,(std::max(0,quantizedDistance-5)));   
 }
 
 std::ostream& operator<<(std::ostream& os, const Game& g){
@@ -99,6 +123,7 @@ std::ostream& operator<<(std::ostream& os, const Game& g){
     os << "\n";
     os << "Player Distance: " << g.playerDistance << std::endl;
     os << "Quantized Player Distance: " << g.getQuantizedPlayerDistance() << std::endl;
-    os << "Game State String: " << g.gameStateString;
+    os << "Difference in Damage Dealt: " << g.getDamageDoneDiff();
+    os << "\nGame State String: " << g.gameStateString;
     return os;
 }

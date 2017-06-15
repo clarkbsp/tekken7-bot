@@ -14,6 +14,7 @@ public:
     unsigned long long attackStateAddr;
     unsigned long long blockStateAddr;
     int health;
+    //int damageTaken;
     bool sideSwapped;
     int macroState;
     int animState;
@@ -27,6 +28,8 @@ public:
 
     Point2d getCentroid2d() const;
     Point2d getPosition2d() const;
+    int getHealth() const;
+    std::string getStateString() const;
     float getX() const;
     float getY() const;
     void update();

@@ -22,10 +22,6 @@ int main(){
             std::cout << "Pressed f1 - starting scan for p1 macro state\n";
             game.initPlayerAddresses();
         }
-        else if (GetAsyncKeyState(VK_F2) & (1 << 15)){
-            std::cout << "Sending lp\n";
-            kb.keyPress(keymap::lp);
-        }
         Sleep(200);
         system("cls");
         std::cout << game << std::endl;

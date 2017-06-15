@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <iostream>
+#include <sstream>
 #include <cmath>
 
 #include "handle.h"
@@ -55,6 +56,11 @@ bool Game::initPlayerAddresses(){
     return true;
 }
 
+
+std::string Game::getGameStateString() const{
+    return gameStateString;
+}
+
 float Game::getPlayerDistance() const{
     return playerDistance;
 }
@@ -65,9 +71,21 @@ int Game::getQuantizedPlayerDistance() const{
 }
 
 void Game::update(){
+    //Make sure to update players first
     p1.update();
     p2.update();
+
     updatePlayerDistance();
+    updateGameStateString();
+}
+
+void Game::updateGameStateString(){
+    std::stringstream ss;
+    ss << std::hex;
+    ss << p1.macroState << " " << p1.animState << " " << p1.attackState << " " << p1.blockState << " ";
+    ss << p2.macroState << " " << p2.animState << " " << p2.attackState << " " << p2.blockState << " ";
+    ss << getQuantizedPlayerDistance();
+    gameStateString = ss.str();
 }
 
 void Game::updatePlayerDistance(){
@@ -80,7 +98,7 @@ std::ostream& operator<<(std::ostream& os, const Game& g){
     os << "Player 2:\n" << g.p2 << std::endl;
     os << "\n";
     os << "Player Distance: " << g.playerDistance << std::endl;
-    os << "Quantized Player Distance: " << g.getQuantizedPlayerDistance();
-
+    os << "Quantized Player Distance: " << g.getQuantizedPlayerDistance() << std::endl;
+    os << "Game State String: " << g.gameStateString;
     return os;
 }

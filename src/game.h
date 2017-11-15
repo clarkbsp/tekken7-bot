@@ -1,8 +1,10 @@
+
 class Game{
 public:
     Game();
     Player p1;
     Player p2;
+    GameInput gameInput = GameInput(false);
     int damageDoneDiff;
     float playerDistance;
     int quantizedPlayerDistance;

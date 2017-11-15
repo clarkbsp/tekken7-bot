@@ -3,7 +3,7 @@
 #include "action.h"
 
 std::vector<std::string> Action::actionStrings = {
-    "db",
+    /*"db",
     "db1",
     "db2",
     "db3",
@@ -101,5 +101,22 @@ std::vector<std::string> Action::actionStrings = {
     "uf14",
     "uf23",
     "uf24",
-    "uf34" 
+    "uf34"*/
+    "b",
+    "d",
+    "f",
+    "df",
+    "1",
+    "2",
+    "4",
+    "df1",
+    "df3",
+    "db1",
+    "db3",
+    "db4",
+    "b1",
+    "uf4",
+    "24",
+    "f4",
+    "f2"
 };

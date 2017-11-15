@@ -1,3 +1,6 @@
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0502
+#endif
 #include <windows.h>
 #include <iostream>
 #include <sstream>
@@ -5,6 +8,8 @@
 
 #include "handle.h"
 #include "mem_find.h"
+#include "keyboard.h"
+#include "game_input.h"
 #include "player.h"
 #include "game.h"
 
